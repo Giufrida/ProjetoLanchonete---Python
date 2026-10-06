@@ -3,14 +3,17 @@ from tkinter import ttk
 
 def submit():
     print(listbox.get(listbox.curselection()))
+    entrada.delete(0, "end")
 
 def adicionar():
     listbox.insert(listbox.size(), entrada.get())
     listbox.config(height=listbox.size())
+    entrada.delete(0, "end")
 
 def apagar():
     listbox.delete(listbox.curselection())
     listbox.config(height=listbox.size())
+
 
 
 root = tk.Tk()
@@ -33,6 +36,9 @@ combobox.set("One")
 combobox.bind("<<ComboboxSelected>>")
 combobox.pack(padx=5, pady=5, fill="x")
 
+label_cardapio = tk.Label(root, text="CARDÁPIO", font=130, bg="#f7ffde")
+label_cardapio.pack()
+
 listbox = tk.Listbox(root, bg="#f7ffde",font=20)
 listbox.pack()
 listbox.insert(1, "Pizza")
@@ -41,13 +47,13 @@ listbox.config(height=listbox.size())
 entrada = tk.Entry(root, text='Insira um produto')
 entrada.pack(padx=10, pady=10)
 
-botao_adicionar = tk.Button(root, text="Adicionar à lista", command=adicionar)
+botao_adicionar = tk.Button(root, text="Adicionar ao cardápio", command=adicionar)
 botao_adicionar.pack(padx=5, pady=5)
 
-botao_submit = tk.Button(root, text="Enviar Pedido", command=submit)
+botao_submit = tk.Button(root, text="Enviar Item ao pedido", command=submit)
 botao_submit.pack(padx=5, pady=5)
 
-botao_apagar = tk.Button(root, text="Remover da lista", command=apagar)
+botao_apagar = tk.Button(root, text="Remover do cardápio", command=apagar)
 botao_apagar.pack(padx=5, pady=5)
 
 root.mainloop()
