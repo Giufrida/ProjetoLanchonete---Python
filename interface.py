@@ -2,8 +2,9 @@ import tkinter as tk
 from tkinter import ttk
 
 def submit():
-    print(listbox.get(listbox.curselection()))
+    listbox_pedido.insert(listbox_pedido.size(),listbox.get(listbox.curselection()))
     entrada.delete(0, "end")
+    listbox_pedido.config(height=listbox_pedido.size())
 
 def adicionar():
     listbox.insert(listbox.size(), entrada.get())
@@ -55,5 +56,12 @@ botao_submit.pack(padx=5, pady=5)
 
 botao_apagar = tk.Button(root, text="Remover do cardápio", command=apagar)
 botao_apagar.pack(padx=5, pady=5)
+
+label_pedido = tk.Label(root, text="PEDIDO", font=130, bg="#f7ffde")
+label_pedido.pack()
+
+listbox_pedido = tk.Listbox(root, bg="#f7ffde",font=20)
+listbox_pedido.pack()
+listbox_pedido.config(height=listbox.size())
 
 root.mainloop()
