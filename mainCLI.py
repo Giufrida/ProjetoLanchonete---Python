@@ -91,14 +91,14 @@ while True:
                 print(i)
 
 
-
-
-
-
-
-
         case 0:
             print('Programa encerrado.')
             break
         case _:
             print('Opção Inválida.')
+<<<<<<< HEAD
+=======
+            
+
+print('Nightfall')
+>>>>>>> da0638cd0a6b3347436acac2915ce72d26bdf45d
