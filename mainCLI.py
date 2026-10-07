@@ -91,12 +91,6 @@ while True:
                 print(i)
 
 
-
-
-
-
-
-
         case 0:
             print('Programa encerrado.')
             break
