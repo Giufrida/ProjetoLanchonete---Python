@@ -34,7 +34,14 @@ while True:
 
     match opcao:
         case 1:
-            id = int(input('Digite o ID do item que deseja adicionar: '))
+            listaIDs = [] 
+            while True:
+                id = int(input('Digite o ID do item que deseja adicionar(sem repetir): '))
+                if id not in listaIDs:
+                    listaIDs.append(id)
+                    break 
+            
+            
             nome = input('Digite o nome do item que deseja adicionar: ')
             preco = float(input('Digite o preço do item que deseja adicionar: '))
 
@@ -64,24 +71,32 @@ while True:
             nomeCliente = input('Digite o nome do cliente: ')
             compra = ''
             print('Digite 0 para sair.')
-            while compra != '0':
-                compra = int(input('Digite o ID do produto que deseja comprar: '))
+            while compra != '0':   
+                while True:
+                    compra = int(input('Digite o ID do produto que deseja comprar: '))
+                    if compra == 0:
+                        break
+                    elif compra in listaIDs:
+                        pedido.append(compra)
+                    else:
+                        print('ID inválido. Digite outro.')
 
-                if compra != 0:
-                    for i in cardapio:
-                        if i['id'] == compra:
-                            pedido.append(i['nome'])
-                            break
-                else:
+
+                if not fila.isEmpty():
                     fila.enqueue(pedido)
+                    sistema.push('Lançar Pedido')
                     print('Produtos adicionados à fila!')
                     print('Produtos no seu pedido:')
-                    for i in pedido:
-                        print(i)
+                    for i in cardapio:
+                        if i['id'] in pedido:
+                            print(i['nome'])
                     break
+                else:
+                    print('Pedido vazio. Não adicionado.')
         case 5:
             atendimento = fila.dequeue()
-            print('Pedido atendido! Itens são:') 
+            sistema.push('Atender Pedido')
+            print('Pedido atendido! IDs dos itens são:') 
             for i in atendimento:
                 print(i)
 
@@ -91,14 +106,22 @@ while True:
                 print(i)
 
 
+        case 7:
+            if sistema.top() == 'Atender Pedido':
+                fila.enqueue(atendimento)
+                print('Pedido enviado para o final da fila!')
+            elif sistema.top() == 'Lançar Pedido':
+                ultimoPedido = fila.showQueue().pop()
+                print(f'Pedido {ultimoPedido} removido da fila!')
+
+        case 8:
+            print('Histórico de ações:')
+            for i in sistema.showQueue():
+                print(i)
+
         case 0:
             print('Programa encerrado.')
             break
+
         case _:
             print('Opção Inválida.')
-<<<<<<< HEAD
-=======
-            
-
-print('Nightfall')
->>>>>>> da0638cd0a6b3347436acac2915ce72d26bdf45d
