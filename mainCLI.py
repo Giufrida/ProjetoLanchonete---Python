@@ -102,6 +102,3 @@ while True:
             break
         case _:
             print('Opção Inválida.')
-            
-
-print('Nightfall')
