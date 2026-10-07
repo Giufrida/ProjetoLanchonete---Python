@@ -80,8 +80,8 @@ while True:
                         print(i)
                     break
         case 5:
-            print('Pedido atendido! Itens são:')
             atendimento = fila.dequeue()
+            print('Pedido atendido! Itens são:') 
             for i in atendimento:
                 print(i)
 
