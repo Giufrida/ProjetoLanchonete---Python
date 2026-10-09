@@ -82,7 +82,7 @@ while True:
                         print('ID inválido. Digite outro.')
 
 
-                if not fila.isEmpty():
+                if pedido:
                     fila.enqueue(pedido)
                     sistema.push('Lançar Pedido')
                     print('Produtos adicionados à fila!')
